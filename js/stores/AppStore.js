@@ -39,7 +39,6 @@ AppDispatcher.register(function(payload){
         _loading = false
         loadData(action.data)
       }
-      debugger
       break
     default:
       return true

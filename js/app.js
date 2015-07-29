@@ -1,7 +1,7 @@
 import React from 'react'
-import Lista from './components/Lista.react'
+import App from './components/App.react'
 
 React.render(
-  <Lista />,
+  <App />,
   document.getElementById('container')
 )

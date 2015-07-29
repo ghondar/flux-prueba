@@ -7,15 +7,20 @@ export default {
       actionType: AppConstants.AGREGAR_DATOS, 
       loading: true
     })
+    let json = {
+      actionType: AppConstants.AGREGAR_DATOS
+    }
     fetch('https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json')
       .then((response) => {
         return response.json()
       })
-      .then((json) => {
-        AppDispatcher.handleAction({
-          actionType: AppConstants.AGREGAR_DATOS,
-          data: json.movies
-        })
+      .then((val) => {
+        json.data = val.movies
+        AppDispatcher.handleAction(json)
+      })
+      .catch((err) => {
+        json.error = true
+        AppDispatcher.handleAction(json)
       })
   }
 }
