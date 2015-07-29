@@ -10,7 +10,6 @@ export default class Lista extends React.Component{
       )
     return (
       <div>
-        <button onClick={AppActions.recibirLista.bind(this)}>Listar</button>
         <ul>
           {this.props.lista.map((document) => {
             return (
@@ -20,12 +19,5 @@ export default class Lista extends React.Component{
         </ul>
       </div>
     )
-  }
-
-  _onChange(){
-    this.setState({
-      lista: AppStore.getData(),
-      loading: AppStore.getLoading()
-    })
   }
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import AppActions from '../actions/AppActions'
 import AppStore from '../stores/AppStore'
 import Lista from './Lista.react'
+import Boton from './Boton.react'
 
 function getStates(){
   return {
@@ -22,7 +23,10 @@ export default class App extends React.Component{
   }
   render(){
     return (
-      <Lista lista={this.state.lista} loading={this.state.loading}/>
+      <div>
+        <Boton />
+        <Lista lista={this.state.lista} loading={this.state.loading}/>
+      </div>
     )
   }
   _onChange(){
