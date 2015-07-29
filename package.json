@@ -1,0 +1,26 @@
+{
+  "name": "prueba",
+  "main": "js/app.js",
+  "scripts": {
+    "start": "watchify -t babelify -o js/bundle.js -v -d .",
+    "build": "browserify -t babelify . | uglifyjs -cm > js/bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "dependencies": {
+    "flux": "latest",
+    "react": "latest",
+    "lodash": "latest"
+  },
+  "devDependencies": {
+    "babelify": "latest",
+    "browserify": "latest",
+    "envify": "latest",
+    "reactify": "latest",
+    "watchify": "latest"
+  }
+}
