@@ -6,43 +6,40 @@ export default class Lista extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      lista : AppStore.getData()
+      lista : AppStore.getData(),
+      loading: AppStore.getLoading()
     }
   }
 
   componentDidMount(){
-    debugger
     AppActions.recibirLista()
-    debugger
     AppStore.addChangeListener(this._onChange.bind(this))
   }
 
   componentWillUnmount(){
-    debugger
     AppStore.removeChangeListener(this._onChange.bind(this))
   }
 
   render(){
-    if(this.state.lista.length === 0)
+    if(this.state.loading)
       return (
-        <ul>Cargando...</ul>
+        <h1>Cargando...</h1>
       )
-    else
-      return (
-        <ul>
-          {this.state.lista.map((document) => {
-            return (
-              <li key={document.id}>{document.title}</li>
-            )
-          })}
-        </ul>
-      )
+    return (
+      <ul>
+        {this.state.lista.map((document) => {
+          return (
+            <li key={document.id}>{document.title}</li>
+          )
+        })}
+      </ul>
+    )
   }
 
   _onChange(){
-    debugger;
     this.setState({
-      lista: AppStore.getData()
+      lista: AppStore.getData(),
+      loading: AppStore.getLoading()
     })
   }
 }

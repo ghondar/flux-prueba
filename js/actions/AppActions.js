@@ -3,6 +3,10 @@ import AppConstants from '../constants/AppConstants'
 
 export default {
   recibirLista: function(){
+    AppDispatcher.handleAction({
+      actionType: AppConstants.AGREGAR_DATOS, 
+      loading: true
+    })
     fetch('https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json')
       .then((response) => {
         return response.json()

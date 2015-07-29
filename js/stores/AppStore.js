@@ -3,10 +3,8 @@ import {EventEmitter} from 'events'
 import AppConstants from '../constants/AppConstants'
 import _ from 'lodash'
 
-let _movies = [{
-  id: 1332,
-  title: 'Esperando.....'
-}]
+let _movies = [],
+    _loading = false
 
 function loadData(data){
   _movies = data
@@ -15,6 +13,9 @@ function loadData(data){
 let AppStore = _.extend({}, EventEmitter.prototype, {
   getData: function(){
     return _movies
+  },
+  getLoading: function(){
+    return _loading
   },
   emitChange: function(){
     this.emit('change')
@@ -32,7 +33,13 @@ AppDispatcher.register(function(payload){
   let text
   switch(action.actionType){
     case AppConstants.AGREGAR_DATOS:
-      loadData(action.data)
+      if(action.loading)
+        _loading = true
+      else{
+        _loading = false
+        loadData(action.data)
+      }
+      debugger
       break
     default:
       return true
