@@ -1,8 +1,11 @@
 import React from 'react'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 import AppActions from '../actions/AppActions'
 import AppStore from '../stores/AppStore'
 import Lista from './Lista.react'
 import Boton from './Boton.react'
+
+injectTapEventPlugin()
 
 function getStates(){
   return {

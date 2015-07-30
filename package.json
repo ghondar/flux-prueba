@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "flux": "latest",
+    "lodash": "latest",
+    "material-ui": "^0.10.2",
     "react": "latest",
-    "lodash": "latest"
+    "react-tap-event-plugin": "^0.1.7"
   },
   "devDependencies": {
     "babelify": "latest",
